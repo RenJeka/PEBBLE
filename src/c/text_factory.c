@@ -27,32 +27,17 @@ void set_text_by_row(int row, TextLayer * text_layer)
       }
 }
 //===================================CONTENT_BITMAP=====↓↓↓======================================================
-void set_image_by_row(int row, BitmapLayer *image_layer, GBitmap **content_image)
+GBitmap* get_image_by_row(int row)
 {
-   GBitmap **pImage = content_image;
-   GBitmap *image = NULL;
-    switch(row){
-       case 0:
-         image = gbitmap_create_with_resource(RESOURCE_ID_TEST_IMAGE);
-         break;
-       case 1:
-         image = gbitmap_create_with_resource(RESOURCE_ID_TEST_IMAGE_1);
-         break;
-       case 2:
-         image = gbitmap_create_with_resource(RESOURCE_ID_TEST_IMAGE_2);
-         break;
-       case 3:
-         image = gbitmap_create_with_resource(RESOURCE_ID_TEST_IMAGE_3);
-         break;
-       case 4:
-         image = gbitmap_create_with_resource(RESOURCE_ID_TEST_IMAGE_4);  
-         break;
-       case 5:
-         image = gbitmap_create_with_resource(RESOURCE_ID_TEST_IMAGE_5);
-         break;
+    switch(row) {
+       case 0: return gbitmap_create_with_resource(RESOURCE_ID_TEST_IMAGE);
+       case 1: return gbitmap_create_with_resource(RESOURCE_ID_TEST_IMAGE_1);
+       case 2: return gbitmap_create_with_resource(RESOURCE_ID_TEST_IMAGE_2);
+       case 3: return gbitmap_create_with_resource(RESOURCE_ID_TEST_IMAGE_3);
+       case 4: return gbitmap_create_with_resource(RESOURCE_ID_TEST_IMAGE_4);  
+       case 5: return gbitmap_create_with_resource(RESOURCE_ID_TEST_IMAGE_5);
       }
-  *content_image = image;
-  bitmap_layer_set_bitmap(image_layer, *content_image);
+    return NULL;
 }
 //=======================================NAME_OF_ROWS===↓↓↓=======================================================
 void draw_row_callback (GContext *ctx, Layer *cell_layer, MenuIndex *cell_index, void *callback_context) {

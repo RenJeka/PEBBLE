@@ -36,11 +36,10 @@ static void content_window_load(Window *window)
       
    content_image_layer= bitmap_layer_create(GRect(0,0,144,250));
    
-   GBitmap** pImage = &content_image;
-   set_image_by_row(selected_main_menu_item, content_image_layer, pImage);
-//    content_image = *pImage;
+   content_image = get_image_by_row(selected_main_menu_item);
+   bitmap_layer_set_bitmap(content_image_layer, content_image);
    
-  // bitmap_layer_set_bitmap(content_image_layer, content_image);
+   // bitmap_layer_set_bitmap(content_image_layer, content_image);
    bitmap_layer_set_compositing_mode(content_image_layer, GCompOpSet);
    scroll_layer_add_child(content_scroll_layer, bitmap_layer_get_layer(content_image_layer));
    
@@ -63,7 +62,6 @@ static void content_window_load(Window *window)
 static void content_window_unload(Window *window) {
    text_layer_destroy(content_text_layer);
    gbitmap_destroy(content_image);
-   APP_LOG(APP_LOG_LEVEL_INFO, "destroy %d", (int)content_image);
    bitmap_layer_destroy(content_image_layer);
    scroll_layer_destroy(content_scroll_layer);
    clock_clear();
