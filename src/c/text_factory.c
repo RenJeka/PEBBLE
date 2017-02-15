@@ -30,34 +30,29 @@ void set_text_by_row(int row, TextLayer * text_layer)
 void set_image_by_row(int row, BitmapLayer *image_layer, GBitmap **content_image)
 {
    GBitmap **pImage = content_image;
+   GBitmap *image = NULL;
     switch(row){
-       case 0: {
-       GBitmap *image = gbitmap_create_with_resource(RESOURCE_ID_TEST_IMAGE);
-//        APP_LOG(APP_LOG_LEVEL_INFO, "create %d", (int)content_image);
-//         bitmap_layer_set_bitmap(image_layer, content_image);
-       }
-      break;
-//       case 1:
-//        content_image = gbitmap_create_with_resource(RESOURCE_ID_TEST_IMAGE_1);
-//        bitmap_layer_set_bitmap(image_layer, content_image);
-//       break;
-//          case 2:
-//        content_image = gbitmap_create_with_resource(RESOURCE_ID_TEST_IMAGE_2);
-//        bitmap_layer_set_bitmap(image_layer, content_image);
-//       break;
-//          case 3:
-//         content_image = gbitmap_create_with_resource(RESOURCE_ID_TEST_IMAGE_3);
-//        bitmap_layer_set_bitmap(image_layer, content_image);
-//       break;
-//          case 4:
-//        content_image = gbitmap_create_with_resource(RESOURCE_ID_TEST_IMAGE_4);
-//        bitmap_layer_set_bitmap(image_layer, content_image);   
-//       break;
-//          case 5:
-//        content_image = gbitmap_create_with_resource(RESOURCE_ID_TEST_IMAGE_5);
-//        bitmap_layer_set_bitmap(image_layer, content_image);   
-//       break;
+       case 0:
+         image = gbitmap_create_with_resource(RESOURCE_ID_TEST_IMAGE);
+         break;
+       case 1:
+         image = gbitmap_create_with_resource(RESOURCE_ID_TEST_IMAGE_1);
+         break;
+       case 2:
+         image = gbitmap_create_with_resource(RESOURCE_ID_TEST_IMAGE_2);
+         break;
+       case 3:
+         image = gbitmap_create_with_resource(RESOURCE_ID_TEST_IMAGE_3);
+         break;
+       case 4:
+         image = gbitmap_create_with_resource(RESOURCE_ID_TEST_IMAGE_4);  
+         break;
+       case 5:
+         image = gbitmap_create_with_resource(RESOURCE_ID_TEST_IMAGE_5);
+         break;
       }
+  *content_image = image;
+  bitmap_layer_set_bitmap(image_layer, *content_image);
 }
 //=======================================NAME_OF_ROWS===↓↓↓=======================================================
 void draw_row_callback (GContext *ctx, Layer *cell_layer, MenuIndex *cell_index, void *callback_context) {
